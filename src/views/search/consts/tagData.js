@@ -1,30 +1,30 @@
 export const TAG_LIST = [
   {
-    id: 0,
+    id: 1,
     tagName: "소설",
   },
   {
-    id: 1,
+    id: 2,
     tagName: "자기계발",
   },
   {
-    id: 2,
+    id: 3,
     tagName: "경제",
   },
   {
-    id: 3,
+    id: 4,
     tagName: "과학",
   },
   {
-    id: 4,
+    id: 5,
     tagName: "역사",
   },
   {
-    id: 5,
+    id: 6,
     tagName: "사회과학",
   },
   {
-    id: 6,
+    id: 7,
     tagName: "고전",
   },
 ];

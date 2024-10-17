@@ -29,7 +29,7 @@ export default function TagList({ setCategory }: Props) {
       </ul>
       {tag && (
         <ul>
-          {DETAIL_LIST[tag].map(({ id, tagName }: Tag) => (
+          {DETAIL_LIST[tag - 1].map(({ id, tagName }: Tag) => (
             <li key={id}>
               <Button
                 text={tagName}
