@@ -7,8 +7,8 @@ export default function HomePage() {
     <section className={styles.section}>
       <h2 className={styles.title}>오늘 뭐 읽지?</h2>
       <section className={styles.searchBox}>
-        <Link href="/select" className={styles.inputBox} />
-        <Link href="/select">
+        <Link href="/search" className={styles.inputBox} />
+        <Link href="/search">
           <SearchIcon />
         </Link>
       </section>
