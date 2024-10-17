@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { TAG_LIST, DETAIL_LIST } from "../consts/tagData";
 import { Button } from "@/shared/ui/button";
+import { Category } from "../model/category";
 
 type Props = {
-  setCategory: (id: number, tagName: string) => void;
+  setCategory: ({ categoryId, text }: Category) => void;
 };
 
 type Tag = {
@@ -16,6 +17,7 @@ export default function TagList({ setCategory }: Props) {
 
   const handleSetTag = (id: number) => {
     setTag(id);
+    setCategory({ categoryId: null, text: "" });
   };
 
   return (
@@ -29,14 +31,16 @@ export default function TagList({ setCategory }: Props) {
       </ul>
       {tag && (
         <ul>
-          {DETAIL_LIST[tag - 1].map(({ id, tagName }: Tag) => (
-            <li key={id}>
-              <Button
-                text={tagName}
-                handleClick={() => setCategory(id, tagName)}
-              />
-            </li>
-          ))}
+          {DETAIL_LIST[tag - 1].map(
+            ({ id: categoryId, tagName: text }: Tag) => (
+              <li key={categoryId}>
+                <Button
+                  text={text}
+                  handleClick={() => setCategory({ categoryId, text })}
+                />
+              </li>
+            )
+          )}
         </ul>
       )}
     </section>
