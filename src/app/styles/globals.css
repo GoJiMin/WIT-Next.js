@@ -80,6 +80,8 @@ html,
 body {
   width: 100%;
   height: 100%;
+  margin: 0;
+  padding: 0;
   user-select: none;
   -webkit-touch-callout: none;
   -moz-user-select: none;
@@ -99,6 +101,16 @@ ul {
 
 li {
   list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-black);
+}
+
+p {
+  margin: 0;
+  padding: 0;
 }
 
 button {
