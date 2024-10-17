@@ -10,7 +10,9 @@ export default function Header() {
   return (
     <header className={`${sistyFour.className} ${styles.header}`}>
       <Link href="/" className={styles.link}>
-        <Image src="/image/Logo.png" alt="Logo Image" width={45} height={45} />
+        <div className={styles.logoContainer}>
+          <Image src="/image/Logo.png" alt="Logo Image" fill />
+        </div>
         <p>WIT</p>
       </Link>
     </header>

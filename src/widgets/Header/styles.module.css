@@ -1,6 +1,6 @@
 .header {
   display: flex;
-  padding: 1.5rem 2.5rem;
+  padding: 1.5rem;
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -14,4 +14,10 @@
   color: var(--color-light-blue);
   font-size: var(--font-tg);
   font-weight: var(--weight-bold);
+}
+
+.logoContainer {
+  position: relative;
+  width: var(--logo-width);
+  height: var(--logo-height);
 }

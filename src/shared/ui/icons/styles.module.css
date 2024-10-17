@@ -1,0 +1,14 @@
+.searchIcon {
+  display: flex;
+  align-items: center;
+  background-color: var(--color-light-blue);
+  color: var(--background-color);
+  border-radius: var(--size-border-radius);
+  font-size: var(--searchIcon-size);
+  padding: 0.5rem;
+  transition: background-color 50ms ease-in;
+}
+
+.searchIcon:hover {
+  background-color: var(--color-blue);
+}

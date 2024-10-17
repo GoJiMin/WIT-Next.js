@@ -18,11 +18,11 @@
   --color-border: #d9d9d9;
 
   /* Font Size */
-  --font-xl: 3rem;
-  --font-lg: 2.5rem;
-  --font-tg: 2rem;
-  --font-md: 1.3rem;
-  --font-sm: 1.1rem;
+  --font-xl: 48px;
+  --font-lg: 40px;
+  --font-tg: 30px;
+  --font-md: 24px;
+  --font-sm: 19px;
 
   /* Font Weight */
   --weight-regular: 400;
@@ -40,10 +40,16 @@
   --background-color: #ffffff;
   --screen-color: #454545;
 
-  /* searchBox height */
-  --searchBox-height: 2rem;
-  --searchIcon-size: 3.2rem;
-  --searchBox-width: 50rem;
+  /* Home Page */
+  --input-padding-y: 2rem;
+  --input-padding-x: 15rem;
+
+  /* Header */
+  --logo-width: 45px;
+  --logo-height: 45px;
+
+  /* Icons Size*/
+  --searchIcon-size: 4.2rem;
 }
 
 /* ===== Scrollbar CSS ===== */
@@ -71,6 +77,28 @@
   border-radius: 40px;
 }
 
+@media (max-width: 767px) {
+  :root {
+    /* font size */
+    --font-xl: 38px;
+    --font-lg: 30px;
+    --font-tg: 23px;
+    --font-md: 20px;
+    --font-sm: 16px;
+
+    /* Home Page */
+    --input-padding-y: 1.5rem;
+    --input-padding-x: 8.5rem;
+
+    /* Header */
+    --logo-width: 32px;
+    --logo-height: 32px;
+
+    /* Icons Size*/
+    --searchIcon-size: 3.2rem;
+  }
+}
+
 /* Universal tags */
 * {
   box-sizing: border-box;
@@ -88,11 +116,7 @@ body {
   -ms-user-select: none;
   -webkit-user-select: none;
   -webkit-tap-highlight-color: transparent;
-  overflow-x: hidden;
-}
-
-html {
-  overflow-y: auto;
+  overflow: hidden;
 }
 
 ul {

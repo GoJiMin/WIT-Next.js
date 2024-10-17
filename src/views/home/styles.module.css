@@ -1,0 +1,46 @@
+.section {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  color: var(--color-light-blue);
+  font-weight: var(--weight-bold);
+  font-size: var(--font-xl);
+  margin-bottom: 40px;
+}
+
+.searchBox {
+  display: flex;
+  justify-content: space-between;
+}
+
+.inputBox {
+  display: flex;
+  border: 3.5px solid var(--color-light-blue);
+  border-radius: var(--size-border-radius);
+  transition: border-color 50ms ease-in;
+  margin-right: 10px;
+  padding: var(--input-padding-y) var(--input-padding-x);
+}
+
+.inputBox:hover {
+  border-color: var(--color-blue);
+}
+
+.textBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 30px;
+  margin-bottom: 170px;
+}
+
+.textBox p {
+  font-size: var(--font-sm);
+}
