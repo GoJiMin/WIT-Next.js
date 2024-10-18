@@ -1,14 +1,18 @@
-import { Tag } from "../model/category";
-import { TAG_LIST } from "../consts/tagData";
-import { Button } from "@/shared/ui/button";
 import styles from "../styles.module.css";
+import { TAG_LIST } from "../consts/tagData";
+import { Tag } from "../model/types";
+import { useSearchState, useSearchStateActions } from "../model/store";
+import { Button } from "@/shared/ui/button";
 
-type Props = {
-  tag: number | null;
-  setCategory: (id: number) => void;
-};
+export default function TagList() {
+  const { tag } = useSearchState();
+  const { setTag, setCategory } = useSearchStateActions();
 
-export default function TagList({ tag, setCategory }: Props) {
+  const handleSetTag = (id: number) => {
+    setTag(id);
+    setCategory({ categoryId: null, text: "" });
+  };
+
   return (
     <ul className={styles.tagList}>
       {TAG_LIST.map(({ id, tagName }: Tag) => {
@@ -17,7 +21,7 @@ export default function TagList({ tag, setCategory }: Props) {
 
         return (
           <li className={defaultStyle} key={id}>
-            <Button text={tagName} handleClick={() => setCategory(id)} />
+            <Button text={tagName} handleClick={() => handleSetTag(id)} />
           </li>
         );
       })}
