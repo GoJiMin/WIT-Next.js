@@ -53,6 +53,9 @@
 
   /* Icons Size*/
   --searchIcon-size: 4.2rem;
+
+  /* toastify */
+  --toastify-toast-width: 380px;
 }
 
 /* ===== Scrollbar CSS ===== */
@@ -175,4 +178,8 @@ button {
 
 input:focus {
   outline: none;
+}
+
+.Toastify__toast-container {
+  font-size: var(--font-sm);
 }

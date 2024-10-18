@@ -1,11 +1,27 @@
 import { FormEvent, useEffect, useRef } from "react";
 import { useSearchState, useSearchStateActions } from "../../model/store";
+import { useToast } from "@/shared/lib/hooks";
 
 export function useSearchForm() {
   const { searchByInput, category } = useSearchState();
   const { setSearchByInput, resetSearchState, setCategory } =
     useSearchStateActions();
+  const { toastError } = useToast();
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const validateCategoryText = (text: string): boolean => {
+    const specialCharPattern = /^[^a-zA-Z0-9ㄱ-ㅎㅏ-ㅣ가-힣\s]/;
+
+    if (specialCharPattern.test(text)) {
+      toastError("첫 글자에 특수문자를 사용할 수 없습니다.");
+      return false;
+    }
+    if (text.length < 2) {
+      toastError("검색어는 최소 2자 이상이어야 합니다.");
+      return false;
+    }
+    return true;
+  };
 
   const handleChangeSearchType = () => {
     setSearchByInput(!searchByInput);
@@ -22,12 +38,10 @@ export function useSearchForm() {
     e.preventDefault();
 
     if (searchByInput) {
-      if (category.text) {
+      if (validateCategoryText(category.text)) {
         console.log(category.text);
         return;
       }
-
-      console.log("검색어를 입력해주세요.");
     }
 
     if (!searchByInput) {
@@ -36,7 +50,7 @@ export function useSearchForm() {
         return;
       }
 
-      console.log("태그를 선택해주세요.");
+      toastError("태그를 선택해주세요.");
     }
   };
 
