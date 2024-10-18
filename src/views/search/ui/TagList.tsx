@@ -1,48 +1,26 @@
-import { useState } from "react";
-import { TAG_LIST, DETAIL_LIST } from "../consts/tagData";
+import { Tag } from "../model/category";
+import { TAG_LIST } from "../consts/tagData";
 import { Button } from "@/shared/ui/button";
-import { Category } from "../model/category";
+import styles from "../styles.module.css";
 
 type Props = {
-  setCategory: ({ categoryId, text }: Category) => void;
+  tag: number | null;
+  setCategory: (id: number) => void;
 };
 
-type Tag = {
-  id: number;
-  tagName: string;
-};
-
-export default function TagList({ setCategory }: Props) {
-  const [tag, setTag] = useState<number>();
-
-  const handleSetTag = (id: number) => {
-    setTag(id);
-    setCategory({ categoryId: null, text: "" });
-  };
-
+export default function TagList({ tag, setCategory }: Props) {
   return (
-    <section>
-      <ul>
-        {TAG_LIST.map(({ id, tagName }: Tag) => (
-          <li key={id}>
-            <Button text={tagName} handleClick={() => handleSetTag(id)} />
+    <ul className={styles.tagList}>
+      {TAG_LIST.map(({ id, tagName }: Tag) => {
+        const activeStyle = tag === id ? `${styles.active}` : "";
+        const defaultStyle = `${styles.tag} ${activeStyle}`;
+
+        return (
+          <li className={defaultStyle} key={id}>
+            <Button text={tagName} handleClick={() => setCategory(id)} />
           </li>
-        ))}
-      </ul>
-      {tag && (
-        <ul>
-          {DETAIL_LIST[tag - 1].map(
-            ({ id: categoryId, tagName: text }: Tag) => (
-              <li key={categoryId}>
-                <Button
-                  text={text}
-                  handleClick={() => setCategory({ categoryId, text })}
-                />
-              </li>
-            )
-          )}
-        </ul>
-      )}
-    </section>
+        );
+      })}
+    </ul>
   );
 }

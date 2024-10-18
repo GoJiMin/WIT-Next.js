@@ -25,7 +25,7 @@ export function RootLayout({
     <html lang="en" className={pretendard.className}>
       <body>
         <Header />
-        {children}
+        <main>{children}</main>
       </body>
     </html>
   );

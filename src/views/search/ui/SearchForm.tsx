@@ -1,8 +1,11 @@
 "use client";
 
-import { FormEvent, useState } from "react";
-import TagList from "./TagList";
+import { FormEvent, useState, useRef, useEffect } from "react";
 import { Category } from "../model/category";
+import styles from "../styles.module.css";
+import { SearchIcon } from "@/shared/ui/icons";
+import TagList from "./TagList";
+import DetailList from "./DetailList";
 
 export default function SearchForm() {
   const [category, setCategory] = useState<Category>({
@@ -11,6 +14,9 @@ export default function SearchForm() {
   });
 
   const [searchByInput, setSearchByInput] = useState(false);
+
+  // Ref to access input element
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleSetCategory = ({ categoryId, text }: Category) => {
     setCategory({
@@ -21,6 +27,7 @@ export default function SearchForm() {
 
   const handleChangeSearchType = () => {
     setSearchByInput((prev) => !prev);
+    setTag(null);
     handleSetCategory({
       categoryId: null,
       text: "",
@@ -43,7 +50,9 @@ export default function SearchForm() {
       }
 
       console.log("검색어를 입력해주세요.");
-    } else {
+    }
+
+    if (!searchByInput) {
       if (category.categoryId) {
         console.log(category.categoryId);
         return;
@@ -53,20 +62,64 @@ export default function SearchForm() {
     }
   };
 
+  const [tag, setTag] = useState<number | null>(null);
+
+  const handleSetTag = (id: number) => {
+    setTag(id);
+    setCategory({ categoryId: null, text: "" });
+  };
+
+  // Focus input when searchByInput is true
+  useEffect(() => {
+    if (searchByInput && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [searchByInput]);
+
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" value={category.text} onChange={handleInputChange} />
-      {searchByInput || <TagList setCategory={handleSetCategory} />}
-      <div>
-        <input
-          type="checkbox"
-          id="check"
-          checked={searchByInput}
-          onChange={handleChangeSearchType}
-        />
-        <label htmlFor="check">키워드 검색</label>
+    <form className={styles.searchForm} onSubmit={handleSubmit}>
+      <header className={styles.header}>
+        <section className={styles.searchBox}>
+          <input
+            ref={inputRef} // Attach the ref to the input element
+            className={styles.input}
+            type="text"
+            value={category.text}
+            disabled={!searchByInput}
+            onChange={handleInputChange}
+          />
+          <button className={styles.button}>
+            <SearchIcon />
+          </button>
+        </section>
+        {searchByInput || <TagList tag={tag} setCategory={handleSetTag} />}
+      </header>
+      <section className={styles.detailContainer}>
+        {!searchByInput && tag && (
+          <DetailList
+            tag={tag}
+            selectedId={category.categoryId}
+            setCategory={handleSetCategory}
+          />
+        )}
+        {searchByInput && (
+          <p className={styles.searchGuide}>
+            제목 또는 저자를 입력해 검색할 수 있어요!
+          </p>
+        )}
+      </section>
+      <div className={styles.toggleContainer}>
+        <label className={styles.toggle}>
+          <input
+            id="toggleButton"
+            type="checkbox"
+            className={styles.toggleInput}
+            checked={searchByInput}
+            onChange={handleChangeSearchType}
+          />
+          <span className={styles.toggleSlider}></span>
+        </label>
       </div>
-      <button>검색</button>
     </form>
   );
 }

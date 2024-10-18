@@ -3,7 +3,7 @@ import SearchForm from "./SearchForm";
 
 export default function SearchPage() {
   return (
-    <section className={styles.section}>
+    <section className={styles.searchPage}>
       <SearchForm />
     </section>
   );

@@ -18,11 +18,11 @@
   --color-border: #d9d9d9;
 
   /* Font Size */
-  --font-xl: 48px;
-  --font-lg: 40px;
-  --font-tg: 30px;
-  --font-md: 24px;
-  --font-sm: 19px;
+  --font-xl: 45px;
+  --font-lg: 36px;
+  --font-tg: 28px;
+  --font-md: 22px;
+  --font-sm: 18px;
 
   /* Font Weight */
   --weight-regular: 400;
@@ -44,6 +44,9 @@
   --input-padding-y: 2rem;
   --input-padding-x: 15rem;
 
+  /* Search Page */
+  --input-width: 30em;
+
   /* Header */
   --logo-width: 45px;
   --logo-height: 45px;
@@ -53,21 +56,16 @@
 }
 
 /* ===== Scrollbar CSS ===== */
-/* Firefox */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: #445d48 #ffffff;
-}
 
 /* Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
-  width: 8px;
+  width: 2px;
   height: 1.5px;
 }
 
 *::-webkit-scrollbar-track {
   background: var(--background-color);
-  border: 1px solid var(--color-border);
+  border: 3px solid var(--color-border);
   border-radius: 40px;
 }
 
@@ -82,7 +80,7 @@
     /* font size */
     --font-xl: 38px;
     --font-lg: 30px;
-    --font-tg: 23px;
+    --font-tg: 22px;
     --font-md: 20px;
     --font-sm: 16px;
 
@@ -90,9 +88,12 @@
     --input-padding-y: 1.5rem;
     --input-padding-x: 8.5rem;
 
+    /* Search Page */
+    --input-width: 17em;
+
     /* Header */
-    --logo-width: 32px;
-    --logo-height: 32px;
+    --logo-width: 25px;
+    --logo-height: 25px;
 
     /* Icons Size*/
     --searchIcon-size: 3.2rem;
@@ -110,17 +111,32 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+  overflow: hidden;
   user-select: none;
   -webkit-touch-callout: none;
   -moz-user-select: none;
   -ms-user-select: none;
   -webkit-user-select: none;
   -webkit-tap-highlight-color: transparent;
-  overflow: hidden;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  padding: 0;
+  box-sizing: border-box;
+  flex: 1;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 ul {
-  padding-left: 0;
+  margin: 0;
+  padding: 0;
 }
 
 li {
@@ -155,4 +171,8 @@ button {
   border-radius: 0;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
+}
+
+input:focus {
+  outline: none;
 }

@@ -1,0 +1,224 @@
+@keyframes dropDown {
+  0% {
+    transform: translateY(30%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes dropDownDetailList {
+  0% {
+    transform: translateX(-10%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+.searchPage {
+  /* Header */
+  --header-margin-top: 20px;
+  --header-margin-bottom: 20px;
+  --header-gap: 10px;
+
+  /* SearchForm */
+  --searchForm-width: 100vw;
+
+  /* DetailList */
+  --grid-template: repeat(2, 1fr);
+  --grid-gap: 2rem;
+
+  /* Toggle Slider */
+  --toggleSlider-padding: 10px 15px;
+}
+
+.searchPage {
+  height: 100%;
+}
+
+.searchForm {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: var(--searchForm-width);
+  margin: 0 auto;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-white);
+  margin-top: var(--header-margin-top);
+  margin-bottom: var(--header-margin-bottom);
+  gap: var(--header-gap);
+}
+
+.searchBox {
+  display: flex;
+  justify-content: center;
+  animation: dropDown 600ms ease;
+}
+
+.input {
+  display: flex;
+  border: 3.5px solid var(--color-light-blue);
+  border-radius: var(--size-border-radius);
+  font-weight: var(--weight-semi-bold);
+  transition: border-color 50ms ease-in;
+  margin-right: 10px;
+  font-size: var(--font-sm);
+  width: var(--input-width);
+  padding: 12px;
+}
+
+.input:disabled {
+  opacity: 1;
+}
+
+.input:hover {
+  border-color: var(--color-blue);
+}
+
+.tagList {
+  display: flex;
+  justify-content: space-between;
+  padding: 18px 1rem;
+  border-bottom: 1px solid var(--color-border);
+  animation: dropDown 600ms ease;
+}
+
+.tag button {
+  font-weight: var(--weight-semi-bold);
+}
+
+.tag button,
+.detail button {
+  font-size: var(--font-sm);
+  white-space: nowrap;
+  transition: all 150ms ease;
+  opacity: 0.9;
+}
+
+.detailContainer {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.detailList {
+  display: grid;
+  grid-template-columns: var(--grid-template);
+  gap: var(--grid-gap);
+  margin-left: 15px;
+  animation: dropDownDetailList 600ms ease;
+}
+
+.active button {
+  transform: scale(110%);
+  color: var(--color-light-blue);
+  opacity: 1;
+}
+
+.toggleContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  font-size: var(--font-sm);
+}
+
+.toggle {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.toggleInput {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggleSlider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--toggleSlider-padding);
+  background-color: #ccc;
+  color: var(--color-white);
+  border-radius: 8px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.toggleInput:checked + .toggleSlider {
+  background-color: var(--color-light-blue);
+}
+
+.toggleSlider::before {
+  content: "키워드 검색하기";
+}
+
+.toggleInput:checked + .toggleSlider::before {
+  content: "태그로 검색하기";
+}
+
+.searchGuide {
+  font-size: var(--font-md);
+  text-align: center;
+  margin-top: 20px;
+  animation: dropDown 600ms ease;
+}
+
+@media (min-width: 768px) {
+  .searchPage {
+    /* Header */
+    --header-margin-top: 40px;
+    --header-margin-bottom: 30px;
+    --header-gap: 20px;
+
+    /* SearchForm */
+    --searchForm-width: 90vw;
+
+    /* Toggle Slider */
+    --toggleSlider-padding: 15px 20px;
+  }
+
+  .tag button:hover,
+  .detail button:hover {
+    transform: scale(110%);
+    color: var(--color-light-blue);
+    opacity: 1;
+  }
+}
+
+@media (min-width: 1024px) {
+  .searchPage {
+    /* Header */
+    --header-margin-top: 50px;
+    --header-margin-bottom: 35px;
+    --header-gap: 30px;
+
+    /* SearchForm */
+    --searchForm-width: 80vw;
+
+    /* detailList */
+    --grid-template: repeat(3, 1fr);
+    --grid-gap: 2.5rem;
+  }
+}
+
+@media (min-width: 1279px) {
+  .searchPage {
+    /* SearchForm */
+    --searchForm-width: 65vw;
+
+    /* detailList */
+    --grid-template: repeat(4, 1fr);
+    --grid-gap: 3.5rem;
+  }
+}
