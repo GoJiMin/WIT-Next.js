@@ -1,2 +1,4 @@
 export { default as SearchPage } from "./ui/SearchPage";
-export { SearchResult } from "./result-page";
+export { SearchResultPage } from "./result-page";
+export { SearchResultLayout } from "./result-page";
+export { SearchResultError } from "./result-page";

@@ -1,4 +1,3 @@
-import { useToast } from "@/shared/lib/hooks";
 import { fetchBookList } from "../api";
 import { useQuery } from "react-query";
 
@@ -8,16 +7,13 @@ type Props = {
 };
 
 export function useSearchResult({ type, query }: Props) {
-  const { toastError } = useToast();
-
-  const { data, isLoading, isError, error } = useQuery(
+  const { data } = useQuery(
     ["bookList", query],
-    () => fetchBookList(type, query)
+    () => fetchBookList(type, query),
+    {
+      suspense: true,
+    }
   );
 
-  if (isError) {
-    toastError((error as Error).message);
-  }
-
-  return { data, isLoading, isError };
+  return { data };
 }
