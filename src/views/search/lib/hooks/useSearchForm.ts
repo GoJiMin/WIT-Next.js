@@ -1,6 +1,7 @@
 import { FormEvent, useEffect, useRef } from "react";
 import { useSearchState, useSearchStateActions } from "../../model/store";
 import { useToast } from "@/shared/lib/hooks";
+import { useRouter } from "next/navigation";
 
 export function useSearchForm() {
   const { searchByInput, category } = useSearchState();
@@ -8,6 +9,8 @@ export function useSearchForm() {
     useSearchStateActions();
   const { toastError } = useToast();
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const router = useRouter();
 
   const validateCategoryText = (text: string): boolean => {
     const specialCharPattern = /^[^a-zA-Z0-9ㄱ-ㅎㅏ-ㅣ가-힣\s]/;
@@ -39,14 +42,14 @@ export function useSearchForm() {
 
     if (searchByInput) {
       if (validateCategoryText(category.text)) {
-        console.log(category.text);
+        router.push(`/search/keyword/${encodeURIComponent(category.text)}`);
         return;
       }
     }
 
     if (!searchByInput) {
       if (category.categoryId) {
-        console.log(category.categoryId);
+        router.push(`/search/tag/${category.categoryId}`);
         return;
       }
 
