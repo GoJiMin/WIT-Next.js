@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "../styles";
 import { Header } from "@/widgets/Header";
 import { ToastContainer } from "react-toastify";
+import { Providers } from "../providers";
 
 const pretendard = localFont({
   src: "../fonts/PretendardVariable.woff2",
@@ -27,7 +28,9 @@ export function RootLayout({
     <html lang="en" className={pretendard.className}>
       <body>
         <Header />
-        <main>{children}</main>
+        <main>
+          <Providers>{children}</Providers>
+        </main>
         <ToastContainer bodyClassName={pretendard.className} />
       </body>
     </html>
