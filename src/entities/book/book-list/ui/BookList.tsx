@@ -1,5 +1,6 @@
-import { Book } from "@/entities/book";
 import { BookDetails } from "@/entities/book/book-details";
+import { Book } from "@/entities/book";
+import styles from "../styles.module.css";
 
 type Props = {
   bookList: Book[];
@@ -7,7 +8,7 @@ type Props = {
 
 export default function BookList({ bookList }: Props) {
   return (
-    <section>
+    <section className={styles.bookList}>
       {bookList.map((book) => (
         <li key={book.isbn13}>
           <BookDetails book={book} />

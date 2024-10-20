@@ -1,0 +1,122 @@
+.book_detail {
+  /* book_detail */
+  --grid-templete: 120px auto;
+
+  /* img_container */
+  --img-container-height: 180px;
+
+  /* description */
+  --text-sm: 14px;
+
+  /* line-clamp */
+  --line-clamp-title-desc: 2;
+  --line-clamp-author: 1;
+
+  display: grid;
+  grid-template-columns: var(--grid-templete);
+  gap: 20px;
+  width: 100%;
+  height: 100%;
+  font-size: var(--font-sm);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 25px;
+}
+
+.img_container {
+  position: relative;
+  width: 100%;
+  height: var(--img-container-height);
+  margin: 0 auto;
+  border: 2px solid var(--color-border);
+  border-radius: var(--size-border-radius);
+}
+
+.text_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.textBox {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.header p {
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-word;
+
+  display: -webkit-box;
+}
+
+.title {
+  font-weight: var(--weight-semi-bold);
+  margin-bottom: 4px;
+
+  -webkit-line-clamp: var(--line-clamp-title-desc);
+  -webkit-box-orient: vertical;
+}
+
+.author {
+  font-size: var(--font-xs);
+
+  -webkit-line-clamp: var(--line-clamp-author);
+  -webkit-box-orient: vertical;
+}
+
+.description {
+  font-size: var(--text-sm);
+
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-word;
+
+  display: -webkit-box;
+  -webkit-line-clamp: var(--line-clamp-title-desc);
+  -webkit-box-orient: vertical;
+}
+
+.more_description {
+  margin-top: 4px;
+  font-size: calc(var(--font-sm) - 3px);
+  color: var(--color-light-grey);
+}
+
+.findLibraryBtn {
+  font-size: var(--text-sm);
+  color: var(--color-light-grey);
+}
+
+@media (min-width: 768px) {
+  .book_detail {
+    /* book_detail */
+    --grid-templete: 200px auto;
+
+    /* img_container */
+    --img-container-height: 250px;
+
+    /* line-clamp */
+    --line-clamp-title-desc: unset;
+    --line-clamp-author: unset;
+
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .title {
+    font-size: var(--font-md);
+  }
+
+  .description,
+  .findLibraryBtn {
+    font-size: var(--font-sm);
+  }
+
+  .more_description {
+    display: none;
+  }
+}

@@ -23,6 +23,7 @@
   --font-tg: 28px;
   --font-md: 22px;
   --font-sm: 18px;
+  --font-xs: 14px;
 
   /* Font Weight */
   --weight-regular: 400;
@@ -86,6 +87,7 @@
     --font-tg: 22px;
     --font-md: 20px;
     --font-sm: 16px;
+    --font-xs: 12px;
 
     /* Home Page */
     --input-padding-y: 1.5rem;
@@ -135,6 +137,8 @@ main {
   height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
+  max-width: 1280px;
+  margin: 0 auto;
 }
 
 ul {
