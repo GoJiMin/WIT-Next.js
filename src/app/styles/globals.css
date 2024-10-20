@@ -18,12 +18,12 @@
   --color-border: #d9d9d9;
 
   /* Font Size */
-  --font-xl: 45px;
-  --font-lg: 36px;
-  --font-tg: 28px;
-  --font-md: 22px;
-  --font-sm: 18px;
-  --font-xs: 14px;
+  --font-xl: 32px;
+  --font-lg: 24px;
+  --font-tg: 20px;
+  --font-md: 16px;
+  --font-sm: 14px;
+  --font-xs: 12px;
 
   /* Font Weight */
   --weight-regular: 400;
@@ -41,22 +41,55 @@
   --background-color: #ffffff;
   --screen-color: #454545;
 
-  /* Home Page */
-  --input-padding-y: 2rem;
-  --input-padding-x: 15rem;
+  /*=== Home Page ===*/
+  --input-padding-y: 1.5rem;
+  --input-padding-x: 8.5rem;
 
-  /* Search Page */
-  --input-width: 30em;
+  /*=== Search Page ===*/
+  --input-width: 17em;
 
   /* Header */
-  --logo-width: 45px;
-  --logo-height: 45px;
+  --header-margin-top: 20px;
+  --header-margin-bottom: 20px;
+  --header-gap: 10px;
+
+  /* SearchForm */
+  --searchForm-width: 100vw;
+
+  /* DetailList */
+  --grid-template: repeat(2, 1fr);
+  --grid-gap: 2rem;
+
+  /* Toggle Slider */
+  --toggleSlider-padding: 10px 15px;
+
+  /*=== Header ===*/
+  --logo-width: 25px;
+  --logo-height: 25px;
+
+  /* ====== Book ====== */
+  /* === Book List === */
+  --book-list-gap: 25px;
+
+  /* === Book Details === */
+  /* book_detail */
+  --grid-templete: 120px auto;
+  --padding-bottom: 25px;
+
+  /* img_container */
+  --img-container-height: 180px;
+
+  /* description */
+  --text-sm: 14px;
+
+  /* line-clamp */
+  --line-clamp-title-desc: 2;
+  --line-clamp-author: 1;
+
+  /* ==================== */
 
   /* Icons Size*/
-  --searchIcon-size: 4.2rem;
-
-  /* toastify */
-  --toastify-toast-width: 380px;
+  --searchIcon-size: 3.2rem;
 }
 
 /* ===== Scrollbar CSS ===== */
@@ -79,29 +112,89 @@
   border-radius: 40px;
 }
 
-@media (max-width: 767px) {
+@media (min-width: 768px) {
   :root {
     /* font size */
-    --font-xl: 38px;
-    --font-lg: 30px;
-    --font-tg: 22px;
+    --font-xl: 40px;
+    --font-lg: 32px;
+    --font-tg: 24px;
     --font-md: 20px;
-    --font-sm: 16px;
-    --font-xs: 12px;
+    --font-sm: 18px;
+    --font-xs: 16px;
 
-    /* Home Page */
-    --input-padding-y: 1.5rem;
-    --input-padding-x: 8.5rem;
+    /*=== Home Page ===*/
+    --input-padding-y: 2rem;
+    --input-padding-x: 15rem;
 
-    /* Search Page */
-    --input-width: 17em;
+    /*=== Search Page ===*/
+    --input-width: 30em;
 
     /* Header */
-    --logo-width: 25px;
-    --logo-height: 25px;
+    --header-margin-top: 40px;
+    --header-margin-bottom: 30px;
+    --header-gap: 20px;
+
+    /* SearchForm */
+    --searchForm-width: 90vw;
+
+    /* Toggle Slider */
+    --toggleSlider-padding: 15px 20px;
+
+    /*=== Header ===*/
+    --logo-width: 45px;
+    --logo-height: 45px;
 
     /* Icons Size*/
-    --searchIcon-size: 3.2rem;
+    --searchIcon-size: 4.2rem;
+
+    /* ====== Book ====== */
+    /* === Book List === */
+    --book-list-gap: 35px;
+
+    /* === Book Details === */
+    /* book_detail */
+    --grid-templete: 200px auto;
+    --padding-bottom: 35px;
+
+    /* img_container */
+    --img-container-height: 250px;
+
+    /* line-clamp */
+    --line-clamp-title-desc: unset;
+    --line-clamp-author: unset;
+    /* ================== */
+
+    /* toastify */
+    --toastify-toast-width: 380px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    /*=== Search Page ===*/
+    /* Header */
+    --header-margin-top: 50px;
+    --header-margin-bottom: 35px;
+    --header-gap: 30px;
+
+    /* SearchForm */
+    --searchForm-width: 80vw;
+
+    /* detailList */
+    --grid-template: repeat(3, 1fr);
+    --grid-gap: 2.5rem;
+  }
+}
+
+@media (min-width: 1279px) {
+  .searchPage {
+    /*=== Search Page ===*/
+    /* SearchForm */
+    --searchForm-width: 65vw;
+
+    /* detailList */
+    --grid-template: repeat(4, 1fr);
+    --grid-gap: 3.5rem;
   }
 }
 

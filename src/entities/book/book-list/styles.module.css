@@ -1,7 +1,7 @@
 .bookList {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: var(--book-list-gap);
   margin: 0 1rem;
   margin-top: 35px;
 }
