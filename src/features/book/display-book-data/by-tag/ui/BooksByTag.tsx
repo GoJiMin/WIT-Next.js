@@ -1,3 +1,4 @@
+import { BookList } from "@/entities/book/book-list";
 import { SearchResultByTag } from "@/entities/search";
 
 type Props = {
@@ -7,7 +8,9 @@ type Props = {
 export default function BooksByTag({ data }: Props) {
   const { item } = data;
 
-  console.log(item);
-
-  return <section></section>;
+  return (
+    <section>
+      <BookList bookList={item} />
+    </section>
+  );
 }

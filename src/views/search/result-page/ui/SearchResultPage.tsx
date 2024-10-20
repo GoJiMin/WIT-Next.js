@@ -1,8 +1,8 @@
 "use client";
 
 import { useSearchResult } from "@/entities/search";
-import { BooksByKeyword } from "@/features/display-book-data/by-keyword";
-import { BooksByTag } from "@/features/display-book-data/by-tag";
+import { BooksByKeyword } from "@/features/book/display-book-data/by-keyword";
+import { BooksByTag } from "@/features/book/display-book-data/by-tag";
 
 type Props = {
   params: {
