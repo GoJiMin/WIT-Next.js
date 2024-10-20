@@ -1,11 +1,4 @@
-type Book = {
-  title: string;
-  author: string;
-  description: string;
-  cover: string;
-  isbn13: string;
-  priceStandard: number;
-};
+import { Book } from "@/entities/book";
 
 export interface SearchResultByTag {
   kind: "tag";
