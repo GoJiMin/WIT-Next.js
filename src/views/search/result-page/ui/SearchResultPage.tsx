@@ -1,6 +1,8 @@
 "use client";
 
 import { useSearchResult } from "@/entities/search";
+import { BooksByKeyword } from "@/features/display-book-data/by-keyword";
+import { BooksByTag } from "@/features/display-book-data/by-tag";
 
 type Props = {
   params: {
@@ -9,7 +11,6 @@ type Props = {
 };
 export default function SearchResultPage({ params }: Props) {
   const [type, query] = params.slug;
-
   const decodedQuery = decodeURIComponent(query);
 
   const { data } = useSearchResult({
@@ -17,7 +18,14 @@ export default function SearchResultPage({ params }: Props) {
     query: decodedQuery,
   });
 
-  console.log(data);
-
-  return <section></section>;
+  return (
+    <section>
+      {data &&
+        (data.kind === "keyword" ? (
+          <BooksByKeyword data={data} />
+        ) : (
+          <BooksByTag data={data} />
+        ))}
+    </section>
+  );
 }

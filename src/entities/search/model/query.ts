@@ -1,5 +1,6 @@
 import { fetchBookList } from "../api";
 import { useQuery } from "react-query";
+import { SearchResultByKeyword, SearchResultByTag } from "./type";
 
 type Props = {
   type: string;
@@ -7,7 +8,7 @@ type Props = {
 };
 
 export function useSearchResult({ type, query }: Props) {
-  const { data } = useQuery(
+  const { data } = useQuery<SearchResultByKeyword | SearchResultByTag>(
     ["bookList", query],
     () => fetchBookList(type, query),
     {
