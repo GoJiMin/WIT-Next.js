@@ -31,6 +31,7 @@ export function RootLayout({
         <main>
           <Providers>{children}</Providers>
         </main>
+        <div id="modal" />
         <ToastContainer bodyClassName={pretendard.className} />
       </body>
     </html>

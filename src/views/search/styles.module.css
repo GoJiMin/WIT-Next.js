@@ -22,13 +22,13 @@
 
 .searchPage {
   height: 100%;
+  width: 100%;
 }
 
 .searchForm {
   display: flex;
   flex-direction: column;
   height: 100%;
-  width: var(--searchForm-width);
   margin: 0 auto;
 }
 
@@ -83,7 +83,7 @@
 
 .tag button,
 .detail button {
-  font-size: var(--font-sm);
+  font-size: var(--font-md);
   white-space: nowrap;
   transition: all 150ms ease;
   opacity: 0.9;
@@ -158,6 +158,9 @@
 }
 
 @media (min-width: 768px) {
+  .searchForm {
+    padding: 0 1rem;
+  }
   .tag button:hover,
   .detail button:hover {
     transform: scale(110%);

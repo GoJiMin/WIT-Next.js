@@ -1,0 +1,11 @@
+.findLibraryBtn {
+  text-align: start;
+  font-size: var(--font-sm);
+  color: var(--color-light-grey);
+}
+
+@media (min-width: 768px) {
+  .findLibraryBtn {
+    font-size: var(--font-xs);
+  }
+}

@@ -118,9 +118,9 @@
     --font-xl: 40px;
     --font-lg: 32px;
     --font-tg: 24px;
-    --font-md: 20px;
-    --font-sm: 18px;
-    --font-xs: 16px;
+    --font-md: 18px;
+    --font-sm: 16px;
+    --font-xs: 14px;
 
     /*=== Home Page ===*/
     --input-padding-y: 2rem;
@@ -167,6 +167,10 @@
     /* toastify */
     --toastify-toast-width: 380px;
   }
+
+  main {
+    max-width: 1080px;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -195,6 +199,10 @@
     /* detailList */
     --grid-template: repeat(4, 1fr);
     --grid-gap: 3.5rem;
+  }
+
+  main {
+    max-width: 1280px;
   }
 }
 
@@ -230,7 +238,7 @@ main {
   height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
-  max-width: 1280px;
+  width: 100%;
   margin: 0 auto;
 }
 

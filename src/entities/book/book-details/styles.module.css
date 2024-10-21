@@ -73,11 +73,6 @@
   color: var(--color-light-grey);
 }
 
-.findLibraryBtn {
-  font-size: var(--font-sm);
-  color: var(--color-light-grey);
-}
-
 @media (min-width: 768px) {
   .book_detail {
     padding-left: 2rem;
@@ -88,8 +83,7 @@
     font-size: var(--font-md);
   }
 
-  .description,
-  .findLibraryBtn {
+  .description {
     font-size: var(--font-sm);
   }
 

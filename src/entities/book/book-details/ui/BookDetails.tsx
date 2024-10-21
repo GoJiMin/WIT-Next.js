@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Book } from "../../model/type";
 import styles from "../styles.module.css";
 import { decode } from "html-entities";
+import { SearchLibrary } from "@/features/library/search-library";
 
 type Props = {
   book: Book;
@@ -32,7 +33,7 @@ export default function BookDetails({ book }: Props) {
             <p className={styles.more_description}>더보기</p>
           </article>
         </section>
-        <p className={styles.findLibraryBtn}>소장 도서관</p>
+        <SearchLibrary isbn={isbn13} />
       </section>
     </article>
   );
