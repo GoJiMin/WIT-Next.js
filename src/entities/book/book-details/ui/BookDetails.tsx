@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Book } from "../../model/type";
 import styles from "../styles.module.css";
+import { decode } from "html-entities";
 
 type Props = {
   book: Book;
@@ -8,6 +9,8 @@ type Props = {
 
 export default function BookDetails({ book }: Props) {
   const { author, cover, description, isbn13, title } = book;
+  const decodedDescription = decode(description);
+
   return (
     <article className={styles.book_detail}>
       <section className={styles.img_container}>
@@ -25,7 +28,7 @@ export default function BookDetails({ book }: Props) {
             <p className={styles.author}>{author}</p>
           </header>
           <article>
-            <p className={styles.description}>{description}</p>
+            <p className={styles.description}>{decodedDescription}</p>
             <p className={styles.more_description}>더보기</p>
           </article>
         </section>
