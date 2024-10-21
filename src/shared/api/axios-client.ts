@@ -9,3 +9,12 @@ export const aladinClient = axios.create({
     Version: 20131101,
   },
 });
+
+export const data4LibraryClient = axios.create({
+  baseURL: "http://data4library.kr/api",
+  params: {
+    authkey: process.env.LIBRARY_BIG_DATA_API_KEY,
+    pageSize: 20,
+    format: "json",
+  },
+});
