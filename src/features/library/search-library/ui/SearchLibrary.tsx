@@ -1,6 +1,7 @@
 import { useModal } from "@/shared/lib/hooks";
 import { Modal } from "@/shared/ui/modal";
 import styles from "../styles.module.css";
+import { SelectRegion } from "../../select-region";
 
 type Props = {
   isbn: string;
@@ -16,7 +17,7 @@ export default function SearchLibrary({ isbn }: Props) {
       </button>
       {openModal && (
         <Modal onClose={handleModalClose}>
-          <p>소장 도서관 찾기!</p>
+          <SelectRegion />
         </Modal>
       )}
     </>
