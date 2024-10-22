@@ -4,6 +4,13 @@
   color: var(--color-light-grey);
 }
 
+.selectContainer {
+  width: 250px;
+  height: 250px;
+  background-color: var(--color-white);
+  z-index: 999;
+}
+
 @media (min-width: 768px) {
   .findLibraryBtn {
     font-size: var(--font-xs);

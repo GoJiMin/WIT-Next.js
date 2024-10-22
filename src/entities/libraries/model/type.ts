@@ -3,3 +3,19 @@ export type LibrarySearchParams = {
   region: string;
   dtl_region?: string;
 };
+
+export type Library = {
+  address: string;
+  closed: string;
+  homepage: string;
+  libCode: string;
+  libName: string;
+  latitude: string;
+  longitude: string;
+  tel: string;
+};
+
+export interface LibrarySearchResult {
+  libs: Library[];
+  resultNum: number;
+}
