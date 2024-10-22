@@ -2,12 +2,19 @@ import { useModal } from "@/shared/lib/hooks";
 import { Modal } from "@/shared/ui/modal";
 import styles from "../styles.module.css";
 import { SelectRegion } from "../../select-region";
+import { RegionState } from "../../select-region/model/type";
+import { useState } from "react";
 
 type Props = {
   isbn: string;
 };
 
 export default function SearchLibrary({ isbn }: Props) {
+  const [regionState, setRegionState] = useState<RegionState>({
+    region: null,
+    dtlRegion: null,
+  });
+
   const { openModal, handleModalOpen, handleModalClose } = useModal();
 
   return (
@@ -17,7 +24,10 @@ export default function SearchLibrary({ isbn }: Props) {
       </button>
       {openModal && (
         <Modal onClose={handleModalClose}>
-          <SelectRegion />
+          <SelectRegion
+            regionState={regionState}
+            setRegionState={setRegionState}
+          />
         </Modal>
       )}
     </>

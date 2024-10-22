@@ -1,33 +1,38 @@
-import { useState } from "react";
 import Select from "react-select";
 import { REGION_DETAIL_LIST, REGION_LIST } from "../consts/regionData";
-import { RegionOption } from "../model/type";
+import { RegionOption, RegionState } from "../model/type";
 
-export default function SelectRegion() {
-  const [region, setRegion] = useState<RegionOption | null>(null);
-  const [dtlRegion, setDtlRegion] = useState<RegionOption | null>(null);
+type Props = {
+  regionState: RegionState;
+  setRegionState: React.Dispatch<React.SetStateAction<RegionState>>;
+};
 
-  const handleSelectRegion = (option: RegionOption | null) => {
-    setRegion(option);
-    setDtlRegion(null);
-  };
-
-  const handleSelectDtlRegion = (option: RegionOption | null) => {
-    setDtlRegion(option);
+export default function SelectRegion({ regionState, setRegionState }: Props) {
+  const handleSelect = (
+    key: "region" | "dtlRegion",
+    option: RegionOption | null
+  ) => {
+    setRegionState((prev) => ({
+      ...prev,
+      [key]: option,
+      ...(key === "region" && { dtlRegion: null }),
+    }));
   };
 
   return (
     <section>
       <Select
-        value={region}
+        value={regionState.region}
         options={REGION_LIST}
-        onChange={handleSelectRegion}
+        onChange={(option) => handleSelect("region", option)}
         placeholder={"지역 선택"}
       />
       <Select
-        value={dtlRegion}
-        options={region ? REGION_DETAIL_LIST[region.value] : []}
-        onChange={handleSelectDtlRegion}
+        value={regionState.dtlRegion}
+        options={
+          regionState.region ? REGION_DETAIL_LIST[regionState.region.value] : []
+        }
+        onChange={(option) => handleSelect("dtlRegion", option)}
         placeholder={"세부 지역 선택"}
         noOptionsMessage={() => "먼저 지역을 선택해주세요."}
       />
