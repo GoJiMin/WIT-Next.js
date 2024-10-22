@@ -1,12 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
-import { GetLibraries, LibrarySearchParams } from "@/entities/libraries";
+import { GetLibraries } from "@/entities/libraries";
 
 type Context = {
-  params: LibrarySearchParams;
+  params: {
+    slug: string[];
+  };
 };
 
-export async function GET(_: NextRequest, context: Context) {
-  const { isbn, region, dtl_region } = context.params;
+export async function GET(_: NextRequest, { params }: Context) {
+  const [isbn, region, dtl_region] = params.slug;
 
   if (!isbn) {
     return new Response(
@@ -23,9 +25,10 @@ export async function GET(_: NextRequest, context: Context) {
   }
 
   return GetLibraries({ isbn, region, dtl_region })
-    .then((res) => NextResponse.json(res))
-    .catch(
-      (error) =>
-        new Response(JSON.stringify({ error: error.message }), { status: 500 })
-    );
+    .then((res) => NextResponse.json(res.response))
+    .catch((error) => {
+      return new Response(JSON.stringify({ error: error.message }), {
+        status: 500,
+      });
+    });
 }

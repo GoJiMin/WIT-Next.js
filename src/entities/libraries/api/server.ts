@@ -1,7 +1,7 @@
 import { data4LibraryClient } from "@/shared/api/axios-client";
 import { LibrarySearchParams } from "../model/type";
 
-export async function searchToKeyword({
+export async function GetLibraries({
   isbn,
   region,
   dtl_region,
@@ -14,5 +14,19 @@ export async function searchToKeyword({
         dtl_region,
       },
     })
-    .then((res) => res.data);
+    .then((res) => {
+      const { response } = res.data;
+
+      if (response.error) {
+        return Promise.reject(
+          new Error(response.error || "올바르지 않은 응답 형식입니다.")
+        );
+      }
+
+      return res.data;
+    })
+    .catch((error) => {
+      console.error("도서 검색 요청 중 오류 발생:", error);
+      throw error;
+    });
 }
