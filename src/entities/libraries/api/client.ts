@@ -6,7 +6,7 @@ export async function fetchLibraryList({
   region,
   dtl_region,
 }: LibrarySearchParams) {
-  const url = `/api/libraries/${isbn}/${region}/${dtl_region}`;
+  const url = `/api/mock/libraries/${isbn}/${region}/${dtl_region}`;
 
   return axios
     .get(url)

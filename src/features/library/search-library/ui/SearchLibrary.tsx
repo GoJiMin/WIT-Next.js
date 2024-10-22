@@ -6,6 +6,7 @@ import { useState } from "react";
 import { fetchLibraryList } from "@/entities/libraries/api/client";
 import { SelectRegion } from "../../select-region";
 import { LibrarySearchResult } from "@/entities/libraries";
+import { LibraryList } from "@/features/library/display-library-list";
 
 type Props = {
   isbn: string;
@@ -40,8 +41,6 @@ export default function SearchLibrary({ isbn }: Props) {
       .catch((error) => toastError(error.message));
   };
 
-  console.log(libraryList);
-
   return (
     <>
       <button onClick={handleModalOpen} className={styles.findLibraryBtn}>
@@ -49,15 +48,19 @@ export default function SearchLibrary({ isbn }: Props) {
       </button>
       {openModal && (
         <Modal onClose={handleModalClose}>
-          <section className={styles.selectContainer}>
-            <SelectRegion
-              regionState={regionState}
-              setRegionState={setRegionState}
-            />
-            <button disabled={disabled} onClick={handleSubmit}>
-              검색하기
-            </button>
-          </section>
+          {libraryList ? (
+            <LibraryList libraryList={libraryList} />
+          ) : (
+            <section className={styles.selectContainer}>
+              <SelectRegion
+                regionState={regionState}
+                setRegionState={setRegionState}
+              />
+              <button disabled={disabled} onClick={handleSubmit}>
+                검색하기
+              </button>
+            </section>
+          )}
         </Modal>
       )}
     </>

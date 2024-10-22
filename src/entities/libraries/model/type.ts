@@ -5,14 +5,16 @@ export type LibrarySearchParams = {
 };
 
 export type Library = {
-  address: string;
-  closed: string;
-  homepage: string;
-  libCode: string;
-  libName: string;
-  latitude: string;
-  longitude: string;
-  tel: string;
+  lib: {
+    address: string;
+    closed: string;
+    homepage: string;
+    libCode: string;
+    libName: string;
+    latitude: string;
+    longitude: string;
+    tel: string;
+  };
 };
 
 export interface LibrarySearchResult {
