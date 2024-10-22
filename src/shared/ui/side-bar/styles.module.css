@@ -1,0 +1,32 @@
+@keyframes fadeInSideBar {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOutSideBar {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.sideBar {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+}
+
+.fadeIn {
+  animation: fadeInSideBar 250ms ease;
+}
+
+.fadeOut {
+  animation: fadeOutSideBar 100ms ease forwards;
+}
