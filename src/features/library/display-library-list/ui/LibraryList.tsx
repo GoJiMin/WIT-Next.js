@@ -3,6 +3,7 @@ import styles from "../styles.module.css";
 import { Library, LibrarySearchResult } from "@/entities/libraries";
 import { MenuOpenIcon } from "@/shared/ui/icons";
 import { useSelectLibrary } from "../lib/hooks/useSelectLibrary";
+import LibraryDetails from "./LibraryDetails";
 
 type Props = {
   libraryList: LibrarySearchResult;
@@ -37,14 +38,11 @@ export default function LibraryList({
         <button className={styles.sideBarBtn} onClick={toggleVisibility}>
           <MenuOpenIcon />
         </button>
-        <p>총 {resultNum}곳의 도서관이 소장 중이에요!</p>
+        <p>{resultNum}곳의 도서관이 소장 중이에요!</p>
+        <p>메뉴 버튼을 클릭해 검색 목록을 확인해보세요!</p>
       </header>
-      <section>
-        {selectedLibrary && (
-          <section>
-            <p>{selectedLibrary.libName}</p>
-          </section>
-        )}
+      <section className={styles.content}>
+        <LibraryDetails library={selectedLibrary} />
       </section>
     </section>
   );

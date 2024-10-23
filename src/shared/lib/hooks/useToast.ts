@@ -21,5 +21,9 @@ export const useToast = () => {
     toast.error(msg, defaultOptions);
   };
 
-  return { toastSuccess, toastError };
+  const toastInfo = (msg: string) => {
+    toast.info(msg, defaultOptions);
+  };
+
+  return { toastSuccess, toastError, toastInfo };
 };
