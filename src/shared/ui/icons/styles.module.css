@@ -12,3 +12,9 @@
 .searchIcon:hover {
   background-color: var(--color-blue);
 }
+
+.menuIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

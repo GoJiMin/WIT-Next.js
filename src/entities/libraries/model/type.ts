@@ -21,3 +21,5 @@ export interface LibrarySearchResult {
   libs: Library[];
   resultNum: number;
 }
+
+export type SimpleLibrary = Library["lib"];

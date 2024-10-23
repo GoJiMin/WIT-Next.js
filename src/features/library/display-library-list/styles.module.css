@@ -5,6 +5,20 @@
   z-index: 999;
   position: relative;
   overflow: hidden;
+  padding: 1rem;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--font-md);
+}
+
+.sideBarBtn {
+  position: absolute;
+  left: 1rem;
+  font-size: var(--font-lg);
 }
 
 .libList {
