@@ -1,6 +1,5 @@
-"use client";
-
 import { SimpleLibrary } from "@/entities/libraries";
+import { KaKaoMap } from "@/features/display-kakao-map";
 import { useCopyText } from "@/shared/lib/hooks/useCopyText";
 import { BrowserIcon, CopyIcon, PhoneCallIcon } from "@/shared/ui/icons";
 
@@ -27,6 +26,7 @@ export default function LibraryDetails({ library }: Props) {
           </a>
         </article>
       </header>
+      <KaKaoMap latitude={latitude} longitude={longitude} />
       <article>
         <p>
           {address}
