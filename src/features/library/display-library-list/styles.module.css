@@ -1,26 +1,121 @@
 .viewer {
-  width: 90%;
-  height: 80%;
-  background-color: var(--color-white);
-  z-index: 999;
   position: relative;
   overflow: hidden;
-  padding: 1rem;
+  z-index: 999;
+  width: 90%;
+  max-width: 900px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-black);
+  border-radius: 12px;
 }
 
 .header {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: var(--font-md);
+  padding: 1rem;
+  font-size: var(--font-sm);
+}
+
+.info {
+  font-size: var(--font-tg);
+  font-weight: var(--weight-semi-bold);
+  color: var(--color-light-blue);
+  margin-bottom: 8px;
 }
 
 .sideBarBtn {
   position: absolute;
+  top: 1rem;
   left: 1rem;
-  font-size: var(--font-lg);
+  font-size: 1.5rem;
 }
 
-.libList {
-  background-color: var(--color-light-white);
+.sideBar {
+  height: 100%;
+  background-color: var(--color-white);
+  border-right: 1px solid var(--color-border);
+}
+
+.header__sideBar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--color-border);
+  font-size: var(--font-md);
+  font-weight: var(--weight-semi-bold);
+}
+
+.libList__sideBar {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.libList__sideBar button {
+  font-size: var(--font-md);
+  font-family: inherit;
+  transition: color 150ms ease;
+}
+
+.active {
+  color: var(--color-light-blue);
+}
+
+.closeButton {
+  position: absolute;
+  right: 0;
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+/*===== Library Details =====*/
+
+.libraryDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 1rem;
+}
+
+.header_details {
+  display: flex;
+  align-items: center;
+  font-size: var(--font-md);
+  font-weight: var(--weight-semi-bold);
+  margin-bottom: 8px;
+}
+
+.linkContainer {
+  display: flex;
+  margin-left: 10px;
+  gap: 10px;
+}
+
+.copyBtn {
+  margin-left: 6px;
+}
+
+@media (min-width: 768px) {
+  .libList__sideBar button:hover {
+    color: var(--color-light-blue);
+  }
+
+  .sideBarBtn {
+    font-size: 1.8rem;
+  }
 }

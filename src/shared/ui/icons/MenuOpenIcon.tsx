@@ -1,6 +1,6 @@
-import { RiMenuUnfoldLine } from "react-icons/ri";
+import { CgMenu } from "react-icons/cg";
 import styles from "./styles.module.css";
 
 export default function MenuIcon() {
-  return <RiMenuUnfoldLine className={styles.menuOpenIcon} />;
+  return <CgMenu className={styles.menuOpenIcon} />;
 }
