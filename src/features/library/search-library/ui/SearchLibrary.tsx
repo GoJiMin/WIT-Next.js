@@ -1,44 +1,32 @@
-import { useModal, useToast } from "@/shared/lib/hooks";
-import { Modal } from "@/shared/ui/modal";
 import styles from "../styles.module.css";
-import { RegionState } from "../../select-region/model/type";
-import { useState } from "react";
-import { fetchLibraryList } from "@/entities/libraries/api/client";
-import { SelectRegion } from "../../select-region";
-import { LibrarySearchResult } from "@/entities/libraries";
+import { SelectRegion } from "../select-region";
 import { LibraryList } from "@/features/library/display-library-list";
+import { useSearchLibrary } from "../lib/hooks/useSearchLibrary";
+import { useSelectRegion } from "../lib/hooks/useSelectRegion";
+import { Modal } from "@/shared/ui/modal";
+import { useModal } from "@/shared/lib/hooks";
 
 type Props = {
   isbn: string;
 };
 
 export default function SearchLibrary({ isbn }: Props) {
-  const [regionState, setRegionState] = useState<RegionState>({
-    region: null,
-    dtlRegion: null,
-  });
+  const { libraryList, setLibraryList, onSubmit } = useSearchLibrary();
+  const { regionState, setRegionState, handleSelectRegion } = useSelectRegion();
 
-  const [libraryList, setLibraryList] = useState<LibrarySearchResult>();
+  const onModalClose = () => {
+    setLibraryList(null);
+    setRegionState({
+      region: null,
+      dtlRegion: null,
+    });
+  };
 
-  const { openModal, handleModalOpen, handleModalClose } = useModal();
-  const { toastError } = useToast();
+  const { openModal, handleModalOpen, handleModalClose } =
+    useModal(onModalClose);
 
-  const disabled = regionState.region === null;
-
-  const handleSubmit = async () => {
-    if (disabled) {
-      toastError("지역을 선택해주세요.");
-
-      return;
-    }
-
-    fetchLibraryList({
-      isbn,
-      region: regionState.region!.value,
-      dtl_region: regionState.dtlRegion?.value,
-    })
-      .then(setLibraryList)
-      .catch((error) => toastError(error.message));
+  const handleSubmit = () => {
+    onSubmit(isbn, regionState);
   };
 
   return (
@@ -54,9 +42,9 @@ export default function SearchLibrary({ isbn }: Props) {
             <section className={styles.selectContainer}>
               <SelectRegion
                 regionState={regionState}
-                setRegionState={setRegionState}
+                handleSelectRegion={handleSelectRegion}
               />
-              <button disabled={disabled} onClick={handleSubmit}>
+              <button disabled={!regionState.region} onClick={handleSubmit}>
                 검색하기
               </button>
             </section>

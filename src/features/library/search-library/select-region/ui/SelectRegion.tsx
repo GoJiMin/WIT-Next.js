@@ -4,27 +4,22 @@ import { RegionOption, RegionState } from "../model/type";
 
 type Props = {
   regionState: RegionState;
-  setRegionState: React.Dispatch<React.SetStateAction<RegionState>>;
-};
-
-export default function SelectRegion({ regionState, setRegionState }: Props) {
-  const handleSelect = (
+  handleSelectRegion: (
     key: "region" | "dtlRegion",
     option: RegionOption | null
-  ) => {
-    setRegionState((prev) => ({
-      ...prev,
-      [key]: option,
-      ...(key === "region" && { dtlRegion: null }),
-    }));
-  };
+  ) => void;
+};
 
+export default function SelectRegion({
+  regionState,
+  handleSelectRegion,
+}: Props) {
   return (
     <section>
       <Select
         value={regionState.region}
         options={REGION_LIST}
-        onChange={(option) => handleSelect("region", option)}
+        onChange={(option) => handleSelectRegion("region", option)}
         placeholder={"지역 선택"}
       />
       <Select
@@ -32,7 +27,7 @@ export default function SelectRegion({ regionState, setRegionState }: Props) {
         options={
           regionState.region ? REGION_DETAIL_LIST[regionState.region.value] : []
         }
-        onChange={(option) => handleSelect("dtlRegion", option)}
+        onChange={(option) => handleSelectRegion("dtlRegion", option)}
         placeholder={"세부 지역 선택"}
         noOptionsMessage={() => "먼저 지역을 선택해주세요."}
       />

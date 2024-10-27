@@ -5,3 +5,4 @@ export type {
   SimpleLibrary,
 } from "./model/type";
 export { GetLibraries } from "./api/server";
+export { fetchLibraryList } from "./api/client";
