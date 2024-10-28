@@ -7,6 +7,7 @@ export function useSearchLibrary() {
   const [libraryList, setLibraryList] = useState<LibrarySearchResult | null>(
     null
   );
+  const [loading, setLoading] = useState(false);
 
   const { toastError, toastInfo } = useToast();
 
@@ -17,6 +18,7 @@ export function useSearchLibrary() {
       return;
     }
 
+    setLoading(true);
     fetchLibraryList({
       isbn,
       region: region!.value,
@@ -31,8 +33,9 @@ export function useSearchLibrary() {
         toastInfo("해당 지역엔 소장 중인 도서관이 없어요.");
         return;
       })
-      .catch((error) => toastError(error.message));
+      .catch((error) => toastError(error.message))
+      .finally(() => setLoading(false));
   };
 
-  return { libraryList, setLibraryList, onSubmit };
+  return { libraryList, loading, setLibraryList, onSubmit };
 }

@@ -11,7 +11,7 @@ type Props = {
 };
 
 export default function SearchLibrary({ isbn }: Props) {
-  const { libraryList, setLibraryList, onSubmit } = useSearchLibrary();
+  const { libraryList, setLibraryList, onSubmit, loading } = useSearchLibrary();
   const { regionState, setRegionState, handleSelectRegion } = useSelectRegion();
 
   const onModalClose = () => {
@@ -45,7 +45,7 @@ export default function SearchLibrary({ isbn }: Props) {
                 handleSelectRegion={handleSelectRegion}
               />
               <button disabled={!regionState.region} onClick={handleSubmit}>
-                검색하기
+                {loading ? "검색 중.." : "검색하기"}
               </button>
             </section>
           )}

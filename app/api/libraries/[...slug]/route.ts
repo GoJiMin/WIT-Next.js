@@ -24,7 +24,7 @@ export async function GET(_: NextRequest, { params }: Context) {
     );
   }
 
-  return GetLibraries({ isbn, region, dtl_region })
+  return GetLibraries({ isbn, region, dtl_region: dtl_region || null })
     .then((res) => NextResponse.json(res.response))
     .catch((error) => {
       return new Response(JSON.stringify({ error: error.message }), {

@@ -4,7 +4,7 @@ import { LibrarySearchParams } from "../model/type";
 export async function GetLibraries({
   isbn,
   region,
-  dtl_region,
+  dtl_region = null,
 }: LibrarySearchParams) {
   return data4LibraryClient
     .get("/libSrchByBook", {
