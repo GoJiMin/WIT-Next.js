@@ -29,5 +29,7 @@ export async function GET(_: NextRequest, { params }: Context) {
 
   const data = readFileSync(filepath, "utf-8");
 
+  await new Promise((resolve) => setTimeout(resolve, 5000));
+
   return NextResponse.json(JSON.parse(data));
 }

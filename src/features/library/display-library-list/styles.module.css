@@ -126,4 +126,17 @@
   .sideBarBtn {
     font-size: 1.8rem;
   }
+
+  .sideBarBtn,
+  .goBackBtn,
+  .closeButton {
+    transition: transform 150ms ease, color 150ms ease;
+  }
+
+  .sideBarBtn:hover,
+  .goBackBtn:hover,
+  .closeButton:hover {
+    transform: scale(110%);
+    color: var(--color-light-blue);
+  }
 }

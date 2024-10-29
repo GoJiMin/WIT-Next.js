@@ -5,7 +5,7 @@ import { useSearchLibrary } from "../lib/hooks/useSearchLibrary";
 import { useSelectRegion } from "../lib/hooks/useSelectRegion";
 import { Modal } from "@/shared/ui/modal";
 import { useModal } from "@/shared/lib/hooks";
-import { useMemo } from "react";
+import { HashSpinner } from "@/shared/ui/spinners";
 
 type Props = {
   isbn: string;
@@ -36,6 +36,7 @@ export default function SearchLibrary({ isbn }: Props) {
 
   return (
     <>
+      {loading && <HashSpinner />}
       <button onClick={handleModalOpen} className={styles.findLibraryBtn}>
         소장 도서관
       </button>
@@ -54,7 +55,9 @@ export default function SearchLibrary({ isbn }: Props) {
                 handleSelectRegion={handleSelectRegion}
               />
               <button
-                className={styles.searchBtn}
+                className={`${styles.searchBtn} ${
+                  !regionState.region && styles.disabled
+                }`}
                 disabled={!regionState.region}
                 onClick={handleSubmit}
               >

@@ -34,8 +34,21 @@
   border-radius: 6px;
 }
 
+.disabled {
+  background-color: var(--color-light-grey);
+}
+
 @media (min-width: 768px) {
   .findLibraryBtn {
     font-size: var(--font-sm);
+  }
+
+  .searchBtn {
+    transition: background-color 250ms ease, color 250ms ease;
+  }
+
+  .searchBtn:hover {
+    background-color: var(--color-white);
+    color: var(--color-light-blue);
   }
 }
