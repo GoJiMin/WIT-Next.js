@@ -1,16 +1,18 @@
 import { SideBar, useSideBar } from "@/shared/ui/side-bar";
 import styles from "../styles.module.css";
 import { Library, LibrarySearchResult } from "@/entities/libraries";
-import { CloseIcon, MenuOpenIcon } from "@/shared/ui/icons";
+import { CloseIcon, GoBackIcon, MenuOpenIcon } from "@/shared/ui/icons";
 import { useSelectLibrary } from "../lib/hooks/useSelectLibrary";
 import LibraryDetails from "./LibraryDetails";
 
 type Props = {
   libraryList: LibrarySearchResult;
+  handleGoBack: () => void;
 };
 
 export default function LibraryList({
   libraryList: { resultNum, libs },
+  handleGoBack,
 }: Props) {
   const { sideBarRef, sideBarVisibility, toggleVisibility } =
     useSideBar<HTMLUListElement>();
@@ -27,6 +29,9 @@ export default function LibraryList({
     <section className={styles.viewer}>
       <button className={styles.sideBarBtn} onClick={toggleVisibility}>
         <MenuOpenIcon />
+      </button>
+      <button className={styles.goBackBtn} onClick={handleGoBack}>
+        <GoBackIcon />
       </button>
       <SideBar visibility={sideBarVisibility}>
         <article ref={sideBarRef} className={styles.sideBar}>

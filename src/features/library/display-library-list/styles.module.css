@@ -36,6 +36,13 @@
   font-size: 1.5rem;
 }
 
+.goBackBtn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+}
+
 .sideBar {
   height: 100%;
   background-color: var(--color-white);

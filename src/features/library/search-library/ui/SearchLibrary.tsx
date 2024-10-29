@@ -5,6 +5,7 @@ import { useSearchLibrary } from "../lib/hooks/useSearchLibrary";
 import { useSelectRegion } from "../lib/hooks/useSelectRegion";
 import { Modal } from "@/shared/ui/modal";
 import { useModal } from "@/shared/lib/hooks";
+import { useMemo } from "react";
 
 type Props = {
   isbn: string;
@@ -29,6 +30,10 @@ export default function SearchLibrary({ isbn }: Props) {
     onSubmit(isbn, regionState);
   };
 
+  const handleGoBack = () => {
+    setLibraryList(null);
+  };
+
   return (
     <>
       <button onClick={handleModalOpen} className={styles.findLibraryBtn}>
@@ -37,7 +42,10 @@ export default function SearchLibrary({ isbn }: Props) {
       {openModal && (
         <Modal onClose={handleModalClose}>
           {libraryList ? (
-            <LibraryList libraryList={libraryList} />
+            <LibraryList
+              libraryList={libraryList}
+              handleGoBack={handleGoBack}
+            />
           ) : (
             <section className={styles.container}>
               <p>지역을 선택해주세요.</p>
