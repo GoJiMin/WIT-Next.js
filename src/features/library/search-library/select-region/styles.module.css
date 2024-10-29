@@ -1,0 +1,12 @@
+.selects {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.select {
+  width: 100%;
+  font-size: var(--font-md);
+}

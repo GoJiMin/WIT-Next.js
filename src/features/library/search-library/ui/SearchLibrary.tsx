@@ -39,13 +39,18 @@ export default function SearchLibrary({ isbn }: Props) {
           {libraryList ? (
             <LibraryList libraryList={libraryList} />
           ) : (
-            <section className={styles.selectContainer}>
+            <section className={styles.container}>
+              <p>지역을 선택해주세요.</p>
               <SelectRegion
                 regionState={regionState}
                 handleSelectRegion={handleSelectRegion}
               />
-              <button disabled={!regionState.region} onClick={handleSubmit}>
-                {loading ? "검색 중.." : "검색하기"}
+              <button
+                className={styles.searchBtn}
+                disabled={!regionState.region}
+                onClick={handleSubmit}
+              >
+                검색
               </button>
             </section>
           )}
